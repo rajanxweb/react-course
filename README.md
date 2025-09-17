@@ -1,2 +1,2 @@
 # react-course
-this is react.js course
+This is my first commit in react course
