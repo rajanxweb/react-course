@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>React Basics</title>
+  <title>Chatbot</title>
 </head>
 
 <body>
@@ -26,21 +26,6 @@
       )
     }
     function ChatMessage({ message, sender }) {
-      // const message = props.message;
-      // const sender = props.sender;
-      // const {message, sender} = props;
-      /*
-      if(sender === 'robot'){
-        return (
-          <div>
-            {message}
-            <img src="robot.png" alt="image of robot" width="50" />
-        </div>
-        )
-      }
-      */
-
-
       return (
         <div>
           {sender === 'robot' && (
@@ -56,23 +41,56 @@
       )
 
     }
+    function ChatMessages() {
+      const chatMessages = [{
+        message: "hello chatbot",
+        sender: "user",
+        id: 'id1'
+      },
+      {
+        message: "hello! how can i help you",
+        sender: "robot",
+        id: 'id2'
+      },
+      {
+        message: "today is october 12",
+        sender: "robot",
+        id: 'id3'
+      }]
+      function sendMessage(){
+        chatMessages.push({
+          message: 'test',
+          sender: 'user',
+          id: crypto.randomUUID()
+        });
+        console.log(sendMessage);
+      }
+      
+
+      return (
+        <>
+        <button onClick={sendMessage}>send a message</button>
+          {chatMessages.map(
+            (chatMessage) => {
+              return (
+                <ChatMessage
+                  message={chatMessage.message}
+                  sender={chatMessage.sender}
+
+                />)
+            }
+          )}
+
+        </>
+      )
+    }
     function App() {
       return (
-      <div>
-        <ChatInput />
-        <ChatMessage
-          message="hello chatbot"
-          sender="user" />
-        <ChatMessage
-          message="hello! how can i help you"
-          sender="robot" />
-        <ChatMessage
-          message="can you get me todays date ?"
-          sender="user" />
-        <ChatMessage
-          message="today is october 12"
-          sender="robot" />
-      </div> );
+        <div>
+          <ChatInput />
+          <ChatMessages />
+
+        </div>);
     }
 
 
